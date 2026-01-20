@@ -1,6 +1,9 @@
+DROP VIEW IF EXISTS tile_crafting_queue_info;
+
 DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS blueprints;
 DROP TABLE IF EXISTS blueprint_components;
+DROP TABLE IF EXISTS tile_crafting_queue;
 
 CREATE TABLE items (
   id INT NOT NULL PRIMARY KEY,
@@ -19,6 +22,23 @@ CREATE TABLE blueprint_components(
   amount INT NOT NULL,
   PRIMARY KEY (item_id, blueprint_id)
 );
+
+CREATE TABLE tile_crafting_queue(
+  id SERIAL,
+  world_id INT NOT NULL,
+  tile_id INT NOT NULL,
+  blueprint_id INT NOT NULL,
+  amount INT NOT NULL
+);
+
+CREATE VIEW tile_crafting_queue_info AS
+SELECT
+  tcq.id AS id,
+  world_id,
+  tile_id,
+  amount,
+  name
+FROM tile_crafting_queue tcq LEFT JOIN blueprints b ON tcq.blueprint_id=b.id;
 
 INSERT INTO items(id, name) VALUES
   (1, 'Iron Ore'),
