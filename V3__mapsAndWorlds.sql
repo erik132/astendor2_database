@@ -110,6 +110,14 @@ SELECT
   items.name AS item_name 
 FROM world_harvests JOIN items ON world_harvests.item_id=items.id;
 
+CREATE VIEW world_tiles_harvest_info AS
+SELECT 
+  wt.world_id,
+  wh.tile_id, 
+  wh.item_id, 
+  wh.harvest_meter
+  FROM world_tiles wt JOIN world_harvests wh ON wt.id=wh.tile_id WHERE wt.world_id=1;
+
 INSERT INTO races (id, name, description) VALUES
   (1, 'Orcs', 'A warrior race usually living on tough environments like mountains, hills or swamps'),
   (2, 'Dwarves', 'Short and strong miners usually prefering mountains'),
@@ -129,8 +137,6 @@ INSERT INTO terrains (id, name, description) VALUES
 INSERT INTO maps (xdim, ydim, name, description, map_file) VALUES
   (3,3,'Moria', 'Initial 3x3 test map', 'moria.jpg'),
   (3,3,'Montreal', 'Second 3x3 test map', 'montreal.jpg');
-
-
 
 INSERT INTO map_tiles(id, map_id, x, y, name, terrain_id, race_id) VALUES
   (1,1,0,0, 'Chaos mountain 1', 2,1),
