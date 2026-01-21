@@ -21,14 +21,6 @@ CREATE TABLE blueprint_components(
   PRIMARY KEY (item_id, blueprint_id)
 );
 
-CREATE TABLE tile_crafting_queue(
-  id SERIAL,
-  world_id INT NOT NULL,
-  tile_id INT NOT NULL,
-  blueprint_id INT NOT NULL,
-  amount INT NOT NULL
-);
-
 INSERT INTO items(id, name) VALUES
   (1, 'Iron Ore'),
   (2, 'Coal'),
@@ -62,5 +54,3 @@ INSERT INTO blueprint_components(item_id, blueprint_id, amount) VALUES
   (3, 4, 2),
   (1, 5, 2)
 ;
-
-
