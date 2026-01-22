@@ -22,7 +22,7 @@ CREATE TABLE blueprint_components(
 );
 
 INSERT INTO items(id, name) VALUES
-  (1, 'Iron Ore'),
+  (1, 'Iron'),
   (2, 'Coal'),
   (3, 'Wood'),
   (4, 'Horse'),
@@ -34,7 +34,8 @@ INSERT INTO items(id, name) VALUES
   (10, 'Camel'),
   (11, 'Wooden Shield'),
   (12, 'Short Bow'),
-  (13, 'Iron Sword')
+  (13, 'Iron Sword'),
+  (14, 'Spear')
 ;
 
 INSERT INTO blueprints(id, name, output_item_id) VALUES
@@ -42,7 +43,8 @@ INSERT INTO blueprints(id, name, output_item_id) VALUES
   (2, 'Bronze Ingot', 9),
   (3, 'Wooden Shield', 11),
   (4, 'Short Bow', 12),
-  (5, 'Iron Sword', 13)
+  (5, 'Iron Sword', 13),
+  (6, 'Spear', 14)
 ;
 
 INSERT INTO blueprint_components(item_id, blueprint_id, amount) VALUES
@@ -52,5 +54,7 @@ INSERT INTO blueprint_components(item_id, blueprint_id, amount) VALUES
   (7, 2, 1),
   (3, 3, 2),
   (3, 4, 2),
-  (1, 5, 2)
+  (1, 5, 2),
+  (1, 6, 1),
+  (3, 6, 1)
 ;
